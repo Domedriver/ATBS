@@ -6,18 +6,12 @@ doc = docx.Document(fileName)
 wordRegex = re.compile(r"[a-z']*") # should capture words and contractions
 
 wordCount = {}
-fullText = []
 cleanText = []
 maxWordLength = 0
 
-for para in doc.paragraphs:
-	if para.text != '':
-		fullText.append(para.text)
-for para in fullText:
-	sentenceWords = para.split()
-	for word in sentenceWords:		
-		wordConvert = unidecode.unidecode(word)
-		mo = wordRegex.search(wordConvert.lower())
+for para in [para.text for para in doc.paragraphs if para.text != '']:	
+	for word in para.split():				
+		mo = wordRegex.search(unidecode.unidecode(word).lower())
 		if mo is not None and mo.group() is not '':
 			cleanText.append(mo.group().lower())
 			if len(mo.group()) > maxWordLength:

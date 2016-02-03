@@ -1,1 +1,1 @@
-# A collection of stuff from Automate the Boring Stuff
+# A collection of files and stuff from Automate the Boring Stuff

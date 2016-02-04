@@ -7,7 +7,7 @@ wordRegex = re.compile(r"[a-z']*") # should capture words and contractions
 
 wordCount = {}
 cleanText = []
-maxWordLength = 0
+maxWordLength = 0 # used to left justify the words
 
 for para in [para.text for para in doc.paragraphs if para.text != '']:	
 	for word in para.split():				

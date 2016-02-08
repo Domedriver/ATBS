@@ -6,8 +6,9 @@ doc = docx.Document(fileName)
 wordRegex = re.compile(r"[a-z']*") # should capture words and contractions
 
 wordCount = {}
+finishedCount = {}
 cleanText = []
-maxWordLength = 0 # used to left justify the words
+maxWordLength = 0
 
 for para in [para.text for para in doc.paragraphs if para.text != '']:	
 	for word in para.split():				
@@ -26,3 +27,6 @@ wordSort = [(k,v) for v,k in sorted([(k, v) for v, k in wordCount.items() if k >
 for thing in wordSort:
 	word, number = thing
 	print word.ljust(maxWordLength), ': ', str(number).rjust(2)
+
+for k, v in wordSort:
+	finishedCount[k] = v
